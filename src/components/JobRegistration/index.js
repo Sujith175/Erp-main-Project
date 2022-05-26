@@ -107,7 +107,7 @@ const path = location.pathname.split("/")[2];
 useEffect(() => {
     const getPost = async () =>  {
       try{
-      const res = await axios.get("http://localhost:5000/api/auth/getjoblist/" + path);
+      const res = await axios.get("/api/auth/getjoblist/" + path);
       const datas = res.data.joblist.jobtitle;
       
      setJobtitle(datas);
@@ -125,7 +125,7 @@ useEffect(() => {
 
 
 const loadDetails=()=>{
-    axios.post('http://localhost:5000/api/auth/getDetails',{email:user.email}).then((response)=>{
+    axios.post('/api/auth/getDetails',{email:user.email}).then((response)=>{
         // console.log(response.data);
         if(response.data){
             setMobileNumber(response.data.mobilenumber);
@@ -215,7 +215,7 @@ const submitHandler = async (e) => {
     }
 
 
-    await axios.post("http://localhost:5000/api/auth/registerjob",{
+    await axios.post("/api/auth/registerjob",{
         fullname,
             photo : url,
              mobilenumber,

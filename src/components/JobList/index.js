@@ -21,7 +21,7 @@ const JobLists = () => {
 useEffect(() => {
   const fetchPosts = async () =>{
     try{
-    const res = await axios.get("http://localhost:5000/api/auth/getjoblist"+  search);
+    const res = await axios.get("/api/auth/getjoblist"+  search);
     setPosts(res.data.jobs);
     }catch(err){
       console.log(err);
@@ -32,7 +32,7 @@ useEffect(() => {
 
 useEffect(() => {
   const fetchData = async () =>{
-    const res = await axios.get(`http://localhost:5000/api/auth/getjobsearch?q=${query}`);
+    const res = await axios.get(`/api/auth/getjobsearch?q=${query}`);
     setData(res.data);
   }
 },[query]);

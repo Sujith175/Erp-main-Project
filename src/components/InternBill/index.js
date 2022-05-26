@@ -37,7 +37,7 @@ const InternBill = () => {
         console.log(path);
           const fetchBillData = async () =>{
             try{
-                const res = await axios.get("http://localhost:5000/api/auth/getBillbyid/" + path);
+                const res = await axios.get("/api/auth/getBillbyid/" + path);
                 setBillid(res.data.Internbilllist._id);
                 setProgname(res.data.Internbilllist.programname);
                 setUsername(res.data.Internbilllist.username);

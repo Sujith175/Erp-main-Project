@@ -22,7 +22,7 @@ const InternshipList = () => {
   useEffect(() =>{
     const fetchIntern = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/getinternship"+ search);
+        const res = await axios.get("/api/auth/getinternship"+ search);
         setPosts(res.data.intern);
         console.log(res.data.intern);
       }catch(err){
