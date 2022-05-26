@@ -21,6 +21,8 @@ const View = () => {
     const [categories, setCategories] = useState("");
     const [location, setLocation] = useState("");
     const [status, setStatus] = useState("active");
+
+    
     const registerHandler = async (e) => {
         e.preventDefault();
 

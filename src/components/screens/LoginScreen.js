@@ -34,7 +34,7 @@ console.log(password);
 dispatch({type: "LOGIN_START"});
   
     try{
-         axios.post("http://localhost:5000/api/auth/login",{
+         axios.post("/api/auth/login",{
             email : email,
             password: password,
         }).then((res)=>
