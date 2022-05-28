@@ -336,7 +336,7 @@ function handledegreeChange(event){
 <Splitright>
 <EmbedWrapper>
         { url && 
-        <Embed width= "500px" height="300px" src={url}/> 
+        <Embed width= "300px" height="300px" src={url}/> 
         }
          { url && 
         <p style={{
@@ -348,9 +348,6 @@ function handledegreeChange(event){
 <Wrapper>
 <Grid>
     
-        
-    
-
     <Paper elevation={20} style={paperStyle}>
         <Grid align='center'>
             

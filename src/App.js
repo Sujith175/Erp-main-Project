@@ -41,6 +41,7 @@ import UpdateJob from './components/New Admin/UpdateJob/UpdateJob';
 import ManageApplication from './components/New Admin/Manage Application/ManageApplication';
 import ManageInternships from './components/New Admin/Manage Internship/ManageInternship';
 import AddInternship from './components/New Admin/Add Internship/AddInternship';
+import ViewInternship from './components/New Admin/View Internship/viewInternship';
 
 
 
@@ -84,6 +85,7 @@ const {user} = useContext(Context);
 <Route exact path="/displayapplication" element={ <ManageApplication/>}/>
 <Route exact path="/manageinternship" element={ <ManageInternships/>}/>
 <Route exact path="/addinternship" element={ <AddInternship/>}/>
+<Route exact path="/viewInternship" element={ <ViewInternship/>}/>
 
 {/* <Route exact path="/userspecificapplication" element={<DisplayCurrent/>}/> */}
 

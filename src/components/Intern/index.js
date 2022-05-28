@@ -40,7 +40,7 @@ const Intern = () => {
       //console.log(path);
         const fetchIntern = async () => {
           try {
-            const res = await axios.get("http://localhost:5000/api/auth/getinternship/"+ search);
+            const res = await axios.get("/api/auth/getinternship/"+ search);
             
             setInte(res.data.intern);
             setInternshipid(res.data.intern[0]._id);
@@ -134,11 +134,12 @@ useEffect(() =>{
 // }catch(error){
 //   console.log(error);
 // }
-
 // }
 // updateCount();
-return;
+// return;
  }
+
+
 
 
   return (

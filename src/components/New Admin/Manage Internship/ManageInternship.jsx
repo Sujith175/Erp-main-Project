@@ -42,7 +42,7 @@ const ManageInternships = () => {
             
             <span className="counter">View InternShip</span>
             <span className="title">View InternShip</span>
-            <span className="link"><Link style={{textDecoration:"none", color:"white"}} to="">Click Here</Link></span>
+            <span className="link"><Link style={{textDecoration:"none", color:"white"}} to="/viewInternship">Click Here</Link></span>
             
         </div>
         <div className="right">
@@ -54,23 +54,6 @@ const ManageInternships = () => {
         </div>
     </div>
 
-
-      <div className="widget">
-        <div className="left">
-            
-            <span className="counter">View InternShip</span>
-            <span className="title">View InternShip</span>
-            <span className="link"><Link style={{textDecoration:"none", color:"white"}} to="">Click Here</Link></span>
-            
-        </div>
-        <div className="right">
-            <div className="percentage positive">
-            <FontAwesomeIcon icon="fa-solid fa-turn-down-left" />
-            
-            <a className="icon"><i class="fa-solid fa-user"></i></a>
-            </div>
-        </div>
-    </div>
 
 
     </div>

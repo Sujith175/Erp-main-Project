@@ -75,7 +75,7 @@ export  const Embed = styled.embed`
   height: 200px;
   width: 300px;
   margin-top : 2%;
-  margin-left: 70%;
+  margin-left: 50%;
 `;
 
 export  const Wrapper = styled.div`

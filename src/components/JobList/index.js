@@ -9,7 +9,6 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { PostT } from '../Job/JobElements';
 import { JobLink } from './JobListElements';
-import { SearchCard, SearchInput, SearchButton } from '../StudentProgram/StudentProgramElements';
 import PageHeader from '../PageHeader';
 const JobLists = () => {
   const [posts, setPosts] = useState([]);
@@ -21,7 +20,7 @@ const JobLists = () => {
 useEffect(() => {
   const fetchPosts = async () =>{
     try{
-    const res = await axios.get("/api/auth/getjoblist"+  search);
+    const res = await axios.get("http://localhost:5000/api/auth/getjoblist"+  search);
     setPosts(res.data.jobs);
     }catch(err){
       console.log(err);
@@ -32,7 +31,7 @@ useEffect(() => {
 
 useEffect(() => {
   const fetchData = async () =>{
-    const res = await axios.get(`/api/auth/getjobsearch?q=${query}`);
+    const res = await axios.get(`http://localhost:5000/api/auth/getjobsearch?q=${query}`);
     setData(res.data);
   }
 },[query]);
@@ -48,14 +47,9 @@ const toggle = () => {
    <Sidebar isOpen={isOpen} toggle={toggle}/>
    <Navbar toggle={toggle} />
    <PageHeader/>
-   <SearchCard>
-         <SearchInput style={{color: "black"}} type="text" placeholder="Search..."
-         onChange={(e) => setQuery(e.target.value)}
-         />
-         <SearchButton><i class="fa fa-search"></i></SearchButton>
-     </SearchCard>
+   
    <PostT style={{marginLeft:"10%"}}>Our Job Openings</PostT>
-   <JobLink style={{marginLeft:"10%"}} to='/userappliedjoblist'>Your Application History</JobLink>
+   {/* <JobLink style={{marginLeft:"10%"}} to='/userappliedjoblist'>Your Application History</JobLink> */}
    
   <Jobs posts ={posts}/>
 
