@@ -32,7 +32,7 @@ const UserAppliedJob = () => {
     useEffect(() =>{
       console.log("inside useeffect");
       //const email = localStorage.getitem('uemail');
-      axios.post("http://localhost:5000/api/auth/getapplicationbyuserid",{
+      axios.post("http://localhost:5000/api/auth/getapplicationbyemail",{
         email:"sujithkumar.sk175@gmail.com" })
       .then((res,err) =>{if(err){console.log(err)}else{console.log("suceess")}setApplication(res.data);})
     },[])
