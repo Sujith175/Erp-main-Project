@@ -48,8 +48,7 @@ const toggle = () => {
    <Navbar toggle={toggle} />
    <PageHeader/>
    
-   <PostT style={{marginLeft:"10%"}}>Our Job Openings</PostT>
-   {/* <JobLink style={{marginLeft:"10%"}} to='/userappliedjoblist'>Your Application History</JobLink> */}
+   
    
   <Jobs posts ={posts}/>
 

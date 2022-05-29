@@ -23,7 +23,7 @@ const SinglePost = () => {
   const path = location.pathname.split("/")[2];
   const[post, SetPost] = useState({}); 
   const [isOpen, setIsOpen] = useState(false);
- 
+ const[application, setApplication] = useState([]);
 
   useEffect(() => {
     const getPost = async () =>  {
@@ -38,6 +38,16 @@ const SinglePost = () => {
   }, [path]);
 
 
+
+  useEffect(() =>{
+    console.log("inside useeffect");
+    //const email = localStorage.getitem('uemail');
+    axios.post("http://localhost:5000/api/auth/getapplicationbyemail",{
+      email:user.email })
+    .then((res,err) =>{if(err){console.log(err)}else{console.log("suceess")}setApplication(res.data);})
+  },[])
+
+
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -49,21 +59,32 @@ const SinglePost = () => {
    <Navbar toggle={toggle}/>
    <SinglePostDesign>
     <SinglePostWrapper>
+      {/* //{new Date().toString()} */}
         <SinglePostTitle>{post.jobtitle}
           </SinglePostTitle>
-           <SinglePostDate><p style={{color:"black"}}>Posted At: </p> {new Date().toString()}</SinglePostDate><br></br>
+           <SinglePostDate><p style={{color:"black"}}>Posted At: </p> {post.createdAt}</SinglePostDate><br></br>
            <SinglePostDate><p style={{color:"black"}}>Validity: </p> {post.enddate}</SinglePostDate>
            <SingleP><p style={{color:"black"}}>Job Location:</p>{post.location}</SingleP>
            <SingleSalary><p style={{color:"black"}}>Expected Salary:</p>{post.salary}</SingleSalary>
-           <SingleJobType><p style={{color:"black"}}>Job Type: </p>{post.jobType}</SingleJobType>
+           <SingleJobType><p style={{color:"black"}}>Job Type: </p>{post.categories}</SingleJobType>
           
           <SinglePostDesc>
             <p style={{color:"black"}}>Job Description: </p>
              {post.jobdescription}
             </SinglePostDesc>
-            <SingleJobRequirements><p style={{color:"black"}}>Requirements For This Job: </p>{post.requirement}</SingleJobRequirements>
+            <SingleJobRequirements><p style={{color:"black"}}>Requirements For This Job: </p>{post.requirements}</SingleJobRequirements>
            <SingleJobCategory><p style={{color:"black"}}>Category: </p>{post.categories}</SingleJobCategory>
-            <ButtonLink to = {`/registerjob/${path}`}>Apply This Job</ButtonLink>
+            
+            {application.map((p)=>(
+                  <div>
+                    {p.email==user.email && p.jobtitle == post.jobtitle &&
+                    <ButtonLink to = "/userappliedjoblist">Already Applied Check Status</ButtonLink>
+                    }
+                    {p.email != user.email && p.jobtitle != post.jobtitle &&
+                      <ButtonLink to = {`/registerjob/${path}`}>Apply This Job</ButtonLink>
+                    }
+                  </div>
+            ))}
           <SinglePostInfo> 
           </SinglePostInfo>
 

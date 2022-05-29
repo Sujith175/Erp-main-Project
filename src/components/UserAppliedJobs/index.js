@@ -18,7 +18,8 @@ const UserAppliedJob = () => {
   const {user, dispatch} = useContext(Context);
   localStorage.setItem('uemail',user.email);
   console.log(localStorage.getItem('uemail'));
-    const[application, setApplication] = useState();
+    const[application, setApplication] = useState([]);
+    console.log(application);
     // useEffect(() =>{
     //     const fetchHandler = async() =>{
     //        const file = await fetch("http://localhost:5000/api/auth/getapplication")
@@ -33,7 +34,7 @@ const UserAppliedJob = () => {
       console.log("inside useeffect");
       //const email = localStorage.getitem('uemail');
       axios.post("http://localhost:5000/api/auth/getapplicationbyemail",{
-        email:"sujithkumar.sk175@gmail.com" })
+        email:user.email })
       .then((res,err) =>{if(err){console.log(err)}else{console.log("suceess")}setApplication(res.data);})
     },[])
 
@@ -48,30 +49,35 @@ const toggle = () => {
 
   return (
       <>
+      
 <Sidebar isOpen={isOpen} toggle={toggle}/>
 <MarginSetterNav/>
 <Navbar toggle={toggle}/>
 <MarginSetterNav/>
 <Title>Applied Jobs</Title>
 <TbaleWrapper>
-    
+ 
+ 
 <Table striped bordered hover>
   <thead>
     <tr>
    
       <th>Job Title</th>
       <th>Status</th>
+      <th>Applied On</th>
       
     </tr>
   </thead>
   <tbody>
-  {application && 
+  {application.map((p)=>(
     <tr>
-      
-      <td>{application.jobtitle}</td> 
-      <td>{application.status}</td>
+    
+      <td>{p.jobtitle}</td> 
+      <td>{p.status}</td>
+      <td>{p.createdAt.toString()}</td>
+  
     </tr>
-  }
+   ))}
   </tbody>
 </Table>
 
